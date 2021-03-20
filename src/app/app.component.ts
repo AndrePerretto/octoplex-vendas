@@ -5,14 +5,20 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Inbox', url: '/folder/Inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/Outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/Archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/Trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
+  public appPages = [ 
+    { title: 'Dashboard', url: '/folder/Dashboard', icon: 'bar-chart' },
+    { title: 'Clientes', url: 'clientes', icon: 'person-add' },
+    { title: 'Pedido de Vendas', url: '/folder/PedidoVendas', icon: 'bag' },
+    { title: 'Lista de Pedidos', url: '/folder/ListaPedidos', icon: 'list' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
   constructor() {}
+
+  ngOnInit() { 
+    (<HTMLInputElement>document.getElementById('username')).innerHTML = localStorage.getItem("username");
+    (<HTMLInputElement>document.getElementById('tipo')).innerHTML = localStorage.getItem("tipo");
+    (<HTMLInputElement>document.getElementById('foto')).src = localStorage.getItem("foto");
+
+    
+  }
 }

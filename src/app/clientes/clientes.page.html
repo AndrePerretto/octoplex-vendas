@@ -1,0 +1,156 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Clientes</ion-title>
+    <ion-icon name="power" slot="end" (click)="deslogar()" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<div class="tabs" tab="clientes">
+  <ion-list>
+    <ion-item *ngFor="let feed of feeds"  >   
+      <ion-label (click)="buscarCliente(feed.id)" >
+        <h2>Código: {{feed.nr_lanca}}</h2>
+        <h3>Nome: {{feed.nm_cliente}}</h3>
+        <p>CNPJ/CPF: {{feed.nm_cnpj_cpf}}</p>
+      </ion-label>  
+    </ion-item>
+  </ion-list> 
+</div>
+
+<div style="display: none;" class="tabs"  tab="dados"  id="dados"> 
+ 
+    <ion-list lines="full" class="ion-no-margin">
+      <ion-list-header lines="full">
+        <ion-label slots="center">
+          Dados
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Código</ion-label>
+        <ion-input id="nr_lanca" placeholder="Código"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nome</ion-label>
+        <ion-input id="nm_cliente" placeholder="Nome"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Nome Fantasia</ion-label>
+        <ion-input id="nm_fantasia" placeholder="Fantasia"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Tipo</ion-label>
+        <ion-input id="nm_tipo" placeholder="Tipo"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>CNPJ/CPF</ion-label>
+        <ion-input id="nm_cnpj_cpf" placeholder="CNPJ/CPF"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>RG</ion-label>
+        <ion-input id="nm_insc_rg" placeholder="RG"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Data Nascimento</ion-label>
+        <ion-input id="dt_dtnasc" placeholder="Data Nascimento"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Suframa</ion-label>
+        <ion-input id="nm_suframa" placeholder="Suframa"></ion-input>
+      </ion-item>
+    </ion-list> 
+</div>
+ 
+<div style="display: none;" class="tabs"  tab="endereco"  id="endereco"> 
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-list-header lines="full">
+      <ion-label slots="center">
+        Endereço
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Endereço</ion-label>
+      <ion-input id="nm_endereco" placeholder="Endereço"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Número</ion-label>
+      <ion-input id="nm_numero" placeholder="Número"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>CEP</ion-label>
+      <ion-input id="nm_cep" placeholder="CEP"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Bairro</ion-label>
+      <ion-input id="nm_bairro" placeholder="Bairro"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cidade</ion-label>
+      <ion-input id="nm_cidade" placeholder="Cidade"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>UF</ion-label>
+      <ion-input id="nm_uf" placeholder="UF"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+
+<div style="display: none;" class="tabs"  tab="contato"  id="contato"> 
+  <ion-list lines="full" class="ion-no-margin">
+    <ion-list-header lines="full">
+      <ion-label slots="center">
+        Contato
+      </ion-label>
+    </ion-list-header>
+    <ion-item>
+      <ion-label>Telefone</ion-label>
+      <ion-input id="nm_fone" placeholder="Telefone"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Celular</ion-label>
+      <ion-input id="nm_celular" placeholder="Celular"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input id="nm_email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Obs</ion-label>
+      <ion-input id="nm_obs" placeholder="Obs"></ion-input>
+    </ion-item>
+  </ion-list>
+</div>
+</ion-content>
+ 
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="start">
+        <ion-tab-button (click)="abaClientes()" tab="clientes">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Clientes</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button (click)="abaDados()" tab="dados">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>Dados</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button  (click)="abaEndereco()" tab="endereco">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>Endereço</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button  (click)="abaContato()" tab="contato">
+          <ion-icon name="information-circle"></ion-icon>
+          <ion-label>Contato</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+  
+</ion-footer>

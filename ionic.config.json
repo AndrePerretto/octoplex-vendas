@@ -1,6 +1,8 @@
 {
   "name": "octoplex-vendas",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "ab47d321"
 }

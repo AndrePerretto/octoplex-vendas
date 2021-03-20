@@ -1,0 +1,36 @@
+ 
+<ion-content>
+  <ion-img src="../assets/img/logo-white.png"></ion-img>
+  <form style="margin-top: 20px;">
+    <div class="input-group">
+      <ion-item>
+        <ion-input #cnpj id="cnpj" type="text" placeholder="CNPJ" ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input #login  id="login" type="text" placeholder="Login" ></ion-input>
+      </ion-item>
+      <div  class="errors">
+        <span >Email obrigatório</span>
+      </div>
+      <ion-item>
+        <ion-input #senha id="senha" type="password" placeholder="Senha" ></ion-input>
+      </ion-item>
+      <div  class="errors">
+        <span >Senha obrigatória</span>
+        <span >Senha precisa ter no mínimo 6 caracteres</span>
+      </div>
+    </div>
+ 
+    <ion-button type="submit" expand="block" (click)="logar()" >Entrar</ion-button>
+    <ion-button type="button" expand="block" color="light" fill="clear">ou Cadastre-se!</ion-button>
+ 
+    <ion-button type="button" expand="block" color="tertiary" (click)="logar()" >
+      <ion-icon name="logo-google" slot="start"></ion-icon>
+        Logar com o Google
+    </ion-button>
+    <ion-button type="button" expand="block" color="tertiary" (click)="logar()" >
+      <ion-icon name="logo-facebook"></ion-icon>
+        Logar com o Facebook
+    </ion-button>
+  </form>
+</ion-content>
