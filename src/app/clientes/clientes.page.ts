@@ -29,7 +29,7 @@ export class ClientesPage implements OnInit {
       })
     }
 
-    this.http.get(`${ "http://www.octoplex.com.br:3000/api/clientes/listarclientes"}`, httpOptions)
+    this.http.get(`${ "https://www.octoplex.com.br:3005/api/clientes/listarclientes"}`, httpOptions)
     .subscribe(
       data => {
         console.log(data)

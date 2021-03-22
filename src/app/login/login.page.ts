@@ -29,7 +29,7 @@ export class LoginPage implements OnInit {
       })
     }
 
-    this.http.get(`${ "http://www.octoplex.com.br:3000/api/administrador/login/" + login + "/" + senha  }`, httpOptions)
+    this.http.get(`${ "https://18.228.166.97:3005/api/administrador/login/" + login + "/" + senha  }`, httpOptions)
     .subscribe(
       data => {
         if(data){ 
