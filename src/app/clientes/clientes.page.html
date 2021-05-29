@@ -30,37 +30,45 @@
           Dados
         </ion-label>
       </ion-list-header>
+      <ion-input style="display: none;" class="input" id="id"></ion-input>
       <ion-item>
         <ion-label>Código</ion-label>
-        <ion-input id="nr_lanca" placeholder="Código"></ion-input>
+        <ion-input class="input" id="nr_lanca" placeholder="Código"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Nome</ion-label>
-        <ion-input id="nm_cliente" placeholder="Nome"></ion-input>
+        <ion-input class="input"  id="nm_cliente" placeholder="Nome"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Nome Fantasia</ion-label>
-        <ion-input id="nm_fantasia" placeholder="Fantasia"></ion-input>
+        <ion-input class="input"  id="nm_fantasia" placeholder="Fantasia"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Tipo</ion-label>
-        <ion-input id="nm_tipo" placeholder="Tipo"></ion-input>
+        <ion-label>Tipo</ion-label> 
+
+        <ion-select class="input"  id="nm_tipo" placeholder="Tipo" value="notifications" interface="action-sheet">
+          <ion-select-option value="F">Fornecedor</ion-select-option>
+          <ion-select-option value="C">Cliente</ion-select-option>
+          <ion-select-option value="CF">Cliente e Fornecedor</ion-select-option>
+        </ion-select>
+
       </ion-item>
       <ion-item>
         <ion-label>CNPJ/CPF</ion-label>
-        <ion-input id="nm_cnpj_cpf" placeholder="CNPJ/CPF"></ion-input>
+        <ion-input class="input"  id="nm_cnpj_cpf" placeholder="CNPJ/CPF"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>RG</ion-label>
-        <ion-input id="nm_insc_rg" placeholder="RG"></ion-input>
+        <ion-input class="input" id="nm_insc_rg" placeholder="RG"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>Data Nascimento</ion-label>
-        <ion-input id="dt_dtnasc" placeholder="Data Nascimento"></ion-input>
+        <ion-label>Data Nascimento</ion-label> 
+        <ion-datetime class="input"  id="dt_dtnasc"  displayFormat="DD/MM/YYYY"   value=""></ion-datetime>
+      
       </ion-item>
       <ion-item>
         <ion-label>Suframa</ion-label>
-        <ion-input id="nm_suframa" placeholder="Suframa"></ion-input>
+        <ion-input class="input" id="nm_suframa" placeholder="Suframa"></ion-input>
       </ion-item>
     </ion-list> 
 </div>
@@ -74,27 +82,56 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Endereço</ion-label>
-      <ion-input id="nm_endereco" placeholder="Endereço"></ion-input>
+      <ion-input class="input" id="nm_endereco" placeholder="Endereço"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Número</ion-label>
-      <ion-input id="nm_numero" placeholder="Número"></ion-input>
+      <ion-input class="input" id="nm_numero" placeholder="Número"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>CEP</ion-label>
-      <ion-input id="nm_cep" placeholder="CEP"></ion-input>
+      <ion-input class="input" id="nm_cep" placeholder="CEP"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Bairro</ion-label>
-      <ion-input id="nm_bairro" placeholder="Bairro"></ion-input>
+      <ion-input class="input" id="nm_bairro" placeholder="Bairro"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Cidade</ion-label>
-      <ion-input id="nm_cidade" placeholder="Cidade"></ion-input>
+      <ion-input class="input" id="nm_cidade" placeholder="Cidade"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label>UF</ion-label>
-      <ion-input id="nm_uf" placeholder="UF"></ion-input>
+      <ion-label>UF</ion-label> 
+      <ion-select class="input" id="nm_uf" placeholder="UF" value="notifications" interface="action-sheet">
+        <ion-select-option value="">Selecione</ion-select-option>
+        <ion-select-option value="RO">RO</ion-select-option>
+        <ion-select-option value="AC">AC</ion-select-option>
+        <ion-select-option value="AM">AM</ion-select-option>
+        <ion-select-option value="RR">RR</ion-select-option>
+        <ion-select-option value="PA">PA</ion-select-option>
+        <ion-select-option value="AP">AP</ion-select-option>
+        <ion-select-option value="TO">TO</ion-select-option>
+        <ion-select-option value="MA">MA</ion-select-option>
+        <ion-select-option value="PI">PI</ion-select-option>
+        <ion-select-option value="CE">CE</ion-select-option>
+        <ion-select-option value="RN">RN</ion-select-option>
+        <ion-select-option value="PB">PB</ion-select-option>
+        <ion-select-option value="PE">PE</ion-select-option>
+        <ion-select-option value="AL">AL</ion-select-option>
+        <ion-select-option value="SE">SE</ion-select-option>
+        <ion-select-option value="BA">BA</ion-select-option>
+        <ion-select-option value="MG">MG</ion-select-option>
+        <ion-select-option value="ES">ES</ion-select-option>
+        <ion-select-option value="RJ">RJ</ion-select-option>
+        <ion-select-option value="SP">SP</ion-select-option>
+        <ion-select-option value="PR">PR</ion-select-option>
+        <ion-select-option value="SC">SC</ion-select-option>
+        <ion-select-option value="RS">RS</ion-select-option>
+        <ion-select-option value="MS">MS</ion-select-option>
+        <ion-select-option value="MT">MT</ion-select-option>
+        <ion-select-option value="GO">GO</ion-select-option>
+        <ion-select-option value="DF">DF</ion-select-option> 
+      </ion-select>
     </ion-item>
   </ion-list>
 </div>
@@ -108,22 +145,40 @@
     </ion-list-header>
     <ion-item>
       <ion-label>Telefone</ion-label>
-      <ion-input id="nm_fone" placeholder="Telefone"></ion-input>
+      <ion-input class="input" id="nm_fone" placeholder="Telefone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Celular</ion-label>
-      <ion-input id="nm_celular" placeholder="Celular"></ion-input>
+      <ion-input class="input" id="nm_celular" placeholder="Celular"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Email</ion-label>
-      <ion-input id="nm_email" placeholder="Email"></ion-input>
+      <ion-input class="input" id="nm_email" placeholder="Email"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label>Obs</ion-label>
-      <ion-input id="nm_obs" placeholder="Obs"></ion-input>
+      <ion-input class="input" id="nm_obs" placeholder="Obs"></ion-input>
     </ion-item>
   </ion-list>
 </div>
+
+<ion-fab id="toolbarCrud" horizontal="end" vertical="bottom" slot="fixed" style="display: none;">
+  <ion-fab-button color="light">
+    <ion-icon md="caret-back" ios="chevron-back-circle-outline"></ion-icon>
+  </ion-fab-button>
+  <ion-fab-list side="start">
+    <ion-fab-button (click)="gravar()" placeholder="Salvar" color="success">
+      <ion-icon placeholder="Salvar"  name="save-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="novo()" placeholder="Novo" color="primary">
+      <ion-icon placeholder="Novo"  name="document-text-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="deletar()" placeholder="Deletar" color="danger">
+      <ion-icon placeholder="Deletar"  name="trash-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+</ion-fab>
+
 </ion-content>
  
 <ion-footer>

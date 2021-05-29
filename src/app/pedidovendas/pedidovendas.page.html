@@ -1,0 +1,81 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Pedido de vendas</ion-title>
+    <ion-icon name="power" slot="end" (click)="deslogar()" ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="tabs"  tab="cliente"  id="cliente">  
+    <ion-list lines="full" class="ion-no-margin">
+      <ion-item>
+        <ion-label >Cliente: </ion-label> 
+        <ion-input style="display: none;"  id="idCliente"></ion-input>
+        <ion-input id="nomeCliente"></ion-input>
+      </ion-item>
+      <ion-item id="gridProd" *ngFor="let pedidoproduto of pedidoprodutos"  >   
+        <ion-label>
+          <h2>Código: {{pedidoproduto.nm_codigo}}</h2>
+          <h3>Nome: {{pedidoproduto.nm_produto}}</h3>
+          <p>Preço: {{pedidoproduto.db_vrvista}}</p>
+        </ion-label>  
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+  
+  <div  style="display: none;" class="tabs" tab="clientes" id="clientes">
+    <ion-list>
+      <ion-item *ngFor="let cliente of clientes"  >   
+        <ion-label (click)="selecionarCliente(cliente.id)" >
+          <h2>Código: {{cliente.nr_lanca}}</h2>
+          <h3>Nome: {{cliente.nm_cliente}}</h3>
+          <p>CNPJ/CPF: {{cliente.nm_cnpj_cpf}}</p>
+        </ion-label>  
+      </ion-item>
+    </ion-list> 
+  </div>
+
+  <div  style="display: none;" class="tabs" tab="produtos" id="produtos">
+    <ion-list>
+      <ion-item *ngFor="let produto of produtos"  >   
+        <ion-label (click)="selecionarProduto(produto.id)" >
+          <h2>Código: {{produto.nm_codigo}}</h2>
+          <h3>Nome: {{produto.nm_produto}}</h3>
+          <p>Preço: {{produto.db_vrvista}}</p>
+        </ion-label>  
+      </ion-item>
+    </ion-list> 
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-tabs>
+      <ion-tab-bar slot="start">
+        <ion-tab-button (click)="abaClientes()" tab="clientes">
+          <ion-icon name="calendar"></ion-icon>
+          <ion-label>Cliente</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button (click)="abaProdutos()" tab="produtos">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>Produto</ion-label>
+        </ion-tab-button>
+    
+        <ion-tab-button  (click)="scan()" tab="endereco">
+          <ion-icon name="map"></ion-icon>
+          <ion-label>Pagamento</ion-label>
+        </ion-tab-button>
+     
+      </ion-tab-bar>
+    </ion-tabs>
+  </ion-toolbar>
+  
+</ion-footer>

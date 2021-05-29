@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { ToastController, AlertController  } from '@ionic/angular';
 
 @Component({
   selector: 'app-clientes',
@@ -8,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ClientesPage implements OnInit {
   public feeds: Object;
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, public toast: ToastController, public alertController: AlertController) { 
     
   }
 
@@ -81,6 +82,9 @@ export class ClientesPage implements OnInit {
    
     var elem = document.getElementById("dados");
     elem.style.display = 'block';
+
+    var elemTool = document.getElementById("toolbarCrud");
+    elemTool.style.display = 'block';
   }
 
   abaEndereco(){
@@ -106,4 +110,145 @@ export class ClientesPage implements OnInit {
     var elem = document.getElementById("contato");
     elem.style.display = 'block';
   }
+
+  novo(){
+    var elems = document.getElementsByClassName('input'); 
+    for (let index = 0; index < elems.length; index++) {
+      const element = elems[index];
+      console.log(element)
+      element['value'] = "";
+    }
+  }
+
+  deletar(){
+    this.showToastQuestionDeletar()
+  }
+
+  deletarConfirmado(){
+    var elems = document.getElementById("id"); 
+
+    if(elems){
+      var id = elems['value'];
+
+      if(id){
+        var httpOptions = {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            'cnpj': localStorage.getItem("cnpj")
+          })
+        }
+    
+        this.http.get(`${ "https://www.octoplex.com.br:3005/api/clientes/delete/" + id}`, httpOptions)
+        .subscribe(
+          data => {
+            this.abaClientes();         
+          },
+          erro => {            
+            if(erro.status == 404) {
+              this.showToast("Não foi possível excluir este cliente. Tente novamente mais tarde.");
+            }
+          }
+        );
+      }
+    }   
+  }
+
+  showToast(mensagem) {
+    this.toast.create({
+      message: mensagem,
+      duration: 2000
+    }).then((toastData) => {
+      console.log(toastData);
+      toastData.present();
+    });
+  }
+
+  showToastQuestionDeletar() { 
+      this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: '',
+        message: 'Deseja deletar este cliente?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Confirmar',
+            handler: () => {
+              this.deletarConfirmado();
+            }
+          }
+        ]
+      }).then((toastData) => {
+        console.log(toastData);
+        toastData.present();
+      });
+   
+  }
+
+
+  gravar(){
+    this.showToastQuestionSave()
+  }
+
+  gravarConfirmado(){
+    var postData = {};
+    var elems = document.getElementsByClassName('input'); 
+    for (let index = 0; index < elems.length; index++) {
+      const element = elems[index];
+      postData[element['id']] = element['value'];      
+    }
+
+
+    var httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'cnpj': localStorage.getItem("cnpj")
+      })
+    }
+
+    this.http.post(`${ "https://www.octoplex.com.br:3005/api/clientes/gravar"}`, postData, httpOptions)
+    .subscribe(
+      data => {
+        this.abaClientes();         
+      },
+      erro => {            
+        if(erro.status == 404) {
+          this.showToast("Não foi possível gravar este cliente. Tente novamente mais tarde.");
+        }
+      }
+    );
+  }
+
+  showToastQuestionSave() { 
+    this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: '',
+      message: 'Deseja gravar este cliente?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Confirmar',
+          handler: () => {
+            this.gravarConfirmado();
+          }
+        }
+      ]
+    }).then((toastData) => {
+      console.log(toastData);
+      toastData.present();
+    });
+ 
+}
+
 }
